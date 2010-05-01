@@ -5,6 +5,9 @@ use autodie;
 binmode STDOUT, ':encoding(UTF-8)';
 use HTML::Template::Compiled;
 use Text::VimColor;
+use Cache::FileCache;
+use Digest::MD5 qw(md5);
+my $cache = Cache::FileCache->new();
 
 my $in_file = $ARGV[0] // 'talk';
 my $text = do {
@@ -18,7 +21,7 @@ my @blocks = grep { $_ } split /^= /m, $text;
 my $prev;
 for my $block (@blocks) {
     my $fn = sprintf 'out/%04d.html', $page_num++;
-    my ($title, $body) = split /[^\n\S]*\n\s*/, $block, 2;
+    my ($title, $body) = split /[^\n\S]*\n/, $block, 2;
     say $title;
     my $t = HTML::Template::Compiled->new(
         filename        => 'template.tmpl',
@@ -48,11 +51,16 @@ for my $block (@blocks) {
 
 sub hilight {
     my ($type, $text) = @_;
+    my $cachekey = md5("$type|$text");
+    my $c = $cache->get($cachekey);
+    return $c if defined $c;
     my $s = Text::VimColor->new(
         filetype    => $type,
         string      => $text,
     );
-    return $s->html;
+    $s = $s->html;
+    $cache->set($cachekey, $s);
+    return $s;
 
 }
 
