@@ -142,7 +142,7 @@
     multi sub what($x)     { say "Something else" }
     
     what('foo');    # Str
-    what([]);      # Something else
+    what([]);       # Something else
 
 = Multis (kürzer)
 :perl6
@@ -152,7 +152,7 @@
     multi what($)     { say "Something else" }
     
     what('foo');    # Str
-    what([]);      # Something else
+    what([]);       # Something else
 
 = Multis Einschränkungen, Operatoren
 :perl6
@@ -225,9 +225,15 @@
     * Alle matches in `$/`
     * `$0` = `$/[0]`, `$1` = `$/[1]` etc.
     * Verschachtelte matches: `$/[0] eq "ab"`, `$/[0][0] eq "b"`, `$/[1] eq "c"`
+    * Match-Objekte sind Bäume
 
-= Regexes: Captures
+= Regexes: Benannte Captures
+
     * `'abc23'` ~~ /<alpha>+/
     * Benannte captures: `$/<alpha>` = `$<alpha>`
     * Da `<alpha>` quantifiziert ist, ist `$<alpha>` eine Liste
 
+= Grammatiken
+:perl6
+
+TODO: Beispiel

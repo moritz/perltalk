@@ -16,12 +16,16 @@ my $text = do {
     <$f>;
 };
 
-my $page_num = 0;
+my $page_num = 1;
 my @blocks = grep { $_ } split /^= /m, $text;
-my $prev;
 for my $block (@blocks) {
-    my $fn = sprintf 'out/%04d.html', $page_num++;
-    my ($title, $body) = split /[^\n\S]*\n/, $block, 2;
+
+    my $prev = sprintf '%04d.html',     $page_num - 1;
+    my $fn   = sprintf 'out/%04d.html', $page_num;
+    my $next = sprintf '%04d.html',     $page_num + 1;
+
+    my ($title, $body) = split /\n/, $block, 2;
+    $title =~ s/\s*$//;
     say $title;
     my $t = HTML::Template::Compiled->new(
         filename        => 'template.tmpl',
@@ -29,10 +33,10 @@ for my $block (@blocks) {
         open_mode       => ':utf8',
         default_escape  => 'html',
     );
-    $t->param(title => $title);
+    $t->param(title => $title, next => $next, prev => $prev);
     if ($body =~ /^:(\w+)/) {
         my $type = $1;
-        $body =~ s/^:\w+\s*//;
+        $body =~ s/^:\w+\h*\n//;
         say "slide type: $type";
         $t->param(contents => "<pre>" . hilight($type, $body) . "</pre>");
     } else {
@@ -47,6 +51,8 @@ for my $block (@blocks) {
     open my $out_fh, '>:encoding(UTF-8)', $fn;
     print $out_fh $t->output;
     close $out_fh;
+} continue {
+    $page_num++;
 }
 
 sub hilight {
@@ -54,6 +60,22 @@ sub hilight {
     my $cachekey = md5("$type|$text");
     my $c = $cache->get($cachekey);
     return $c if defined $c;
+
+
+    my @lines = split /\n/, $text;
+    my $min_ws = 999_999;
+    for (@lines) {
+        next if $_ =~ /^\s*$/;
+        /^(\s*)/;
+        if (length($1) < $min_ws) {
+            $min_ws = length($1);
+        }
+    }
+    if ($min_ws > 0) {
+        substr($_, 0, $min_ws) = '' for @lines;
+        $text = join "\n", @lines;
+    }
+
     my $s = Text::VimColor->new(
         filetype    => $type,
         string      => $text,
