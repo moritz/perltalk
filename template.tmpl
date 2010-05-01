@@ -5,11 +5,11 @@
         <script type="text/javascript" src="jquery-1.4.2.js"></script>
         <script type="text/javascript">
             var pages = new Array();
-            pages['N'] = "<%var next%>";
-            pages['P'] = "<%var prev%>";
-            pages['L'] = "<%var last%>";
-            pages['F'] = "<%var first%>";
-            pages['I'] = "<%var first%>";
+            pages['N'] = "<%var next  escape=js %>";
+            pages['P'] = "<%var prev  escape=js %>";
+            pages['L'] = "<%var last  escape=js %>";
+            pages['F'] = "<%var first escape=js %>";
+            pages['I'] = "<%var first escape=js %>";
             $(document).ready(function() {
                 $('body').keyup(function(e) {
                     var code = e.keyCode || e.which;

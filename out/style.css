@@ -9,6 +9,10 @@ h1 {
     font-size: 1.5em;
 }
 
+code, pre {
+    background-color: #CCC;
+}
+
 .synComment    { color: #0000FF }
 .synConstant   { color: #FF00FF }
 .synIdentifier { color: #008B8B }

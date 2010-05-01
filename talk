@@ -1,10 +1,11 @@
-= Perl 6
+= Perl 6 - Übersicht
 
     * Allgemeines
     * Unterschiede 5 => 6 am Beispiel erklärt
     * Subs und Signaturen
     * Objektsystem
     * Regexes
+    * Grammatiken
 
 
 = Was ist Perl 6?
@@ -215,8 +216,9 @@
 
 = Regexes: Gruppierungen
 
-    * `(...)`   bleibt
-    * `(?:...)` => `[ ]`
+    * `( )`   bleibt
+    * `(?: )` => `[ ]`
+    * Zeichenklassen `[a-z]` => `<[a..z]>`
     * Bennante regexes: `<alpha>`, `<panic("Syntax error")>`
 
 = Regexes: Captures
@@ -229,11 +231,35 @@
 
 = Regexes: Benannte Captures
 
-    * `'abc23'` ~~ /<alpha>+/
+    * `'abc23' ~~ /<alpha>+/`
     * Benannte captures: `$/<alpha>` = `$<alpha>`
     * Da `<alpha>` quantifiziert ist, ist `$<alpha>` eine Liste
 
 = Grammatiken
 :perl6
 
-TODO: Beispiel
+    grammar URI {
+        token TOP { <schema> '://' <host>  [ ':' <port> ]?  <path> };
+        token schema { <[a..z]>+ }
+        token host   { [\w+] ** \. }
+        token port   { \d+ }
+        token path   { '/' \S* }
+    }
+
+    my $m = URI.parse('http://perl6.org/');
+    say $m<schema>;     # http
+    say $m<path>;       # /
+
+= Grammatiken - Vererbung
+:perl6
+
+    class URL::HTTP is URI {
+        token schema { 'http' }
+    }
+
+    for <http://perl6.org/ ftp://pause.cpan.org> -> $url {
+        my $m = URL::HTTP.parse($url);
+        print "NOT " unless $m;
+        say "parsed $url";
+    }
+
