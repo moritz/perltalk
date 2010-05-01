@@ -9,6 +9,15 @@ use Cache::FileCache;
 use Digest::MD5 qw(md5);
 my $cache = Cache::FileCache->new();
 
+sub template {
+    HTML::Template::Compiled->new(
+        filename        => 'template.tmpl',
+        tagstyle        => [qw/+asp_chomp/],
+        open_mode       => ':utf8',
+        default_escape  => 'html',
+    );
+}
+
 my $in_file = $ARGV[0] // 'talk';
 my $text = do {
     open my $f, '<:encoding(UTF-8)', $in_file;
@@ -18,22 +27,24 @@ my $text = do {
 
 my $page_num = 1;
 my @blocks = grep { $_ } split /^= /m, $text;
+my @titles = ('Index');
 for my $block (@blocks) {
 
     my $prev = sprintf '%04d.html',     $page_num - 1;
     my $fn   = sprintf 'out/%04d.html', $page_num;
-    my $next = sprintf '%04d.html',     $page_num + 1;
 
     my ($title, $body) = split /\n/, $block, 2;
     $title =~ s/\s*$//;
-    say $title;
-    my $t = HTML::Template::Compiled->new(
-        filename        => 'template.tmpl',
-        tagstyle        => [qw/+asp_chomp/],
-        open_mode       => ':utf8',
-        default_escape  => 'html',
+    $titles[$page_num] = $title;
+    my $t = template();
+    $t->param(
+        normal_page    => 1,
+        title => $title,
+        first => '0000.html',
+        last  => sprintf('%04d.html', scalar(@blocks)),
+        next  => sprintf('%04d.html', $page_num + 1),
+        prev  => sprintf('%04d.html', $page_num - 1),
     );
-    $t->param(title => $title, next => $next, prev => $prev);
     if ($body =~ /^:(\w+)/) {
         my $type = $1;
         $body =~ s/^:\w+\h*\n//;
@@ -53,6 +64,25 @@ for my $block (@blocks) {
     close $out_fh;
 } continue {
     $page_num++;
+}
+$page_num--;
+
+{
+    # index page
+    my $t = template();
+    $t->param(
+        title   => 'Index',
+    );
+    my $c = "<ul>\n";
+    for my $i (0..$page_num) {
+        $c .= sprintf qq[<li><a href="%04d.html">%s</a></li>\n],
+                      $i, escape($titles[$i]);
+    }
+    $c .= "</ul>\n";
+    $t->param(contents => $c);
+    open my $out_fh, '>:encoding(UTF-8)', 'out/0000.html';
+    print $out_fh $t->output;
+    close $out_fh;
 }
 
 sub hilight {

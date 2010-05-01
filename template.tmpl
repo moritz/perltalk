@@ -2,13 +2,40 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" href="style.css" type="text/css" />
+        <script type="text/javascript" src="jquery-1.4.2.js"></script>
+        <script type="text/javascript">
+            var pages = new Array();
+            pages['N'] = "<%var next%>";
+            pages['P'] = "<%var prev%>";
+            pages['L'] = "<%var last%>";
+            pages['F'] = "<%var first%>";
+            pages['I'] = "<%var first%>";
+            $(document).ready(function() {
+                $('body').keyup(function(e) {
+                    var code = e.keyCode || e.which;
+                    var go = pages[String.fromCharCode(code)];
+                    if (go) {
+                        window.location.replace(go)
+                    }
+                });
+            });
+        </script>
+
         <title><%var title%></title>
     </head>
     <body>
+      <div id="page">
         <h1><%var title%></h1>
         <%var contents escape=none%>
 
-        <p><a href="<%var prev escape=url%>">« prev</a>
-        <a href="<%var next escape=url%>">next »</a>
+        <%if normal_page%>
+        <p>
+        <a href="<%var first escape=url%>">« first</a>
+        <a href="<%var prev  escape=url%>">&lt; prev</a>
+        <a href="<%var next  escape=url%>">next &gt;</a>
+        <a href="<%var last  escape=url%>">last »</a>
+        </p>
+        <%/if%>
+      </div>
     </body>
 </html>

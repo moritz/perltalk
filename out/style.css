@@ -1,5 +1,14 @@
 /* Syntax Hilighting stuff from and for Text::VimColor */
 
+body {
+    font-size: 200%;
+    background-color: white;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
 .synComment    { color: #0000FF }
 .synConstant   { color: #FF00FF }
 .synIdentifier { color: #008B8B }
