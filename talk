@@ -142,7 +142,7 @@
     multi sub what($x)     { say "Something else" }
     
     what('foo');    # Str
-    what({[]);      # Something else
+    what([]);      # Something else
 
 = Multis (kürzer)
 :perl6
@@ -152,7 +152,7 @@
     multi what($)     { say "Something else" }
     
     what('foo');    # Str
-    what({[]);      # Something else
+    what([]);      # Something else
 
 = Multis Einschränkungen, Operatoren
 :perl6
