@@ -1,0 +1,200 @@
+= Perl 6
+
+    * Allgemeines
+    * Unterschiede 5 => 6 am Beispiel erklärt
+    * Subs und Signaturen
+    * Objektsystem
+
+
+= Was ist Perl 6?
+
+    * Sprachspezifikation
+    * Mehrere Compiler
+        (wie bei C, C++, Fortran, python, ...)
+    * Test suite
+    * Standard-Grammatik (STD.pm6)
+
+= Beziehung zu Perl 5
+
+    * Als Nachfolger von Perl 5 gedacht
+    * Aber Perl 5 wurde weiter entwickelt
+    * "Two languages from the Perl family" --  Larry Wall
+
+= Compiler
+
+    * mildew, perlito, elf, pugs, sprixel
+    * Rakudo <http://rakudo.org/>
+        => für die Beispiele hier
+
+= Wie Perl 5:
+
+    * Sigils an Variablen, :: für namespaces
+    * Blocks mit `{...}`, subs mit `sub`
+    * `if, for, while` wie in Perl 5
+    * `say, given/when`, smart matching nach 5.10 rück-portiert
+
+= ... nur besser/anders
+
+    * 'strict' als Voreinstellung
+    * Sigils invariant `@array` => `@array[$index]`
+    * `if ($condition) { }`   => `if $condition`
+    * `for my $x (@list) { ... }`  => `for @list -> $x { ... }`  (lambdas)
+
+= Beispiel: Wörter zählen in Perl 5
+:perl
+
+    use strict;
+    use warnings;
+    my %words;
+    while (my $line = <STDIN>) {
+        for ($line =~ /(\w+)/g) {
+            $words{$1}++;
+        }
+    }
+    my @top_keys = sort { $words{$b} <=> $words{$a} } keys %words;
+    for (@top_keys[0..9]) {
+        print "$words{$_}\t$_\n";
+    }
+
+
+= Beispiel: Wörter zählen in Perl 6
+:perl6
+
+    my %words;
+    for $*IN.lines -> $line {
+        for $line.words {
+            %words{$_}++;
+        }
+    }
+    my @top_pairs = %words.sort: { -.value };
+    for @top_pairs[^10] {
+        say .value, "\t", .key;
+    }
+
+= Unterschiede (I)
+
+    * `while (my $line = <STDIN>)` => `for $*IN.lines -> $line`
+    * `$*IN`: "contextual" variable, in dynamischen und lexikalischen Scopes
+      überschreibbar
+    * `$*IN.lines`: "lazy" Liste der Zeilen (ohne \n)
+    * `-> $line { ... }`: "pointy block" mit Signatur
+
+= Unterschiede (II)
+
+    * `for ($line =~ /(\w+)/g)` => `for $line.words`
+    * `Str.words` ist neu, könnte man auch als
+      `Str.comb(/\S+/)` schreiben
+    * `$words{$_}++` => `%words{$_}++`: Sigil invariant
+
+= Unterschiede (III)
+
+    * `my @top_keys = sort { $words{$b} <=> $words{$a} } keys %words;`
+        => `my @top_pairs = %words.sort: { -.value };`
+    * Ein Hash in list-Kontext ist eine Liste von Paaren
+    * Alles ist ein Objekt
+    * `List.sort` sortiert nach dem Wert, den eine 1-argument-Closure
+       zurückgibt
+    * `.value`: Kurz für `$_.value`
+    * => @top_pairs enthält sortierte Liste der keys
+
+= Unterschiede (IV)
+    
+    * `@top_keys[0..9]` => `@top_pairs[^10]`
+    * Array slice
+    * `^10` ist kurz für `0..9`
+
+= Subs und Signaturen (I)
+:perl6
+
+    sub logarithm($num, $base = 2.7183) {
+        return log($num) / log($base)
+    }
+    say logarithm(4);       # Benutzt default
+    say logarithm(4, 2);
+
+= Subs und Signaturen (II)
+:perl6
+
+    sub swap($a is rw, $b is rw) {
+        ($a, $b) = ($b, $a);
+    }
+    swap(my $x = 1, my $y = 3);
+    say $x;         # 3
+
+    swap(3, 4);     # sollte sterben
+
+= Benannte Parameter
+:perl6
+
+    sub rectangle(:$width!, :$height!, :$char = 'X') {
+        say $char x $width for ^$height;
+    }
+
+    rectangle char => 'o', width => 8, height => 4;
+    rectangle :width(20), :height<5>;
+
+= Multis
+:perl6
+
+    multi sub what(Int $x) { say "Int" }
+    multi sub what(Str $x) { say "Str" }
+    multi sub what($x)     { say "Something else" }
+    
+    what('foo');    # Str
+    what({[]);      # Something else
+
+= Multis (kürzer)
+:perl6
+
+    multi what(Int $) { say "Int" }
+    multi what(Str $) { say "Str" }
+    multi what($)     { say "Something else" }
+    
+    what('foo');    # Str
+    what({[]);      # Something else
+
+= Multis Einschränkungen, Operatoren
+:perl6
+
+    multi postfix:<!>(Int $x) { $x * ($x-1)! }
+    multi postfix:<!>(Int $x where { $x == 0}) { 1 }
+
+    say 5!;         # 120
+
+= Multis Einschränkungen, Operatoren (kürzer)
+:perl6
+
+    multi postfix:<!>(Int $x) { $x * ($x-1)! }
+    multi postfix:<!>(0)      { 1 }
+
+    say 5!;         # 120
+
+= Objektsystem
+:perl6
+
+    class Entrepreneur {
+        has $.balance = 0;
+        method pay ($amount) {
+            die "bankrupt" if $amount > $!balance;
+            say "Paying $amount Euro";
+            $!balance -= $amount;
+        }
+    }
+
+    my $e = Entrepreneur.new(balance => 100);
+    $e.pay(30);
+    say $e.balance;     # 70
+    $e.pay(120);        # bankrupt
+
+= Objektsystem im Detail (1)
+
+    * `class MeineKlasse { ... }` definiert Klasse
+    * `class A is B { ... }` Vererbung
+    * `has $!private-attribute` Privates Attribute
+    * `has $.foo`  = `has $!foo; method foo { $!foo }`
+
+= Objektsystem im Detail (2)
+
+    * `method die-methode { ... }` hat Zugriff auf 
+      `self` und Attribute
+    * Klassen haben per Default einen Konstruktor `new`
