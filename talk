@@ -37,11 +37,11 @@
 
 = ... nur besser/anders
 
-    * 'strict' als Voreinstellung
+    * `strict` als Voreinstellung
     * Sigils invariant `@array` => `@array[$index]`
     * `if ($condition) { }`   => `if $condition`
-    * `for my $x (@list) { ... }`  => `for @list -> $x { ... }`  (lambdas)
     * `%hash{$var}` für Variablen, `%hash<literal>` für Literale
+    * `for my $x (@list) { ... }`  => `for @list -> $x { ... }`  (lambdas)
 
 = Beispiel: Wörter zählen in Perl 5
 :perl

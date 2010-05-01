@@ -34,6 +34,7 @@ for my $block (@blocks) {
     my $fn   = sprintf 'out/%04d.html', $page_num;
 
     my ($title, $body) = split /\n/, $block, 2;
+    say "$page_num $title";
     $title =~ s/\s*$//;
     $titles[$page_num] = $title;
     my $t = template();
@@ -58,7 +59,6 @@ for my $block (@blocks) {
             die "Don't know how to render slide $page_num";
         }
     }
-    say $t->output;
     open my $out_fh, '>:encoding(UTF-8)', $fn;
     print $out_fh $t->output;
     close $out_fh;
@@ -118,7 +118,6 @@ sub hilight {
 
 sub render_list {
     my $block = shift;
-    $block =~ s/^.*\n$//mg;
     my @lines = grep { $_ } split /^\s*\*/m, $block;
     s/^\*\s*//g for @lines;
     my $processed = "<ul>\n";
