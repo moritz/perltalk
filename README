@@ -1,0 +1,8 @@
+In this repository both a talk about Perl 6 is written, and a software is
+being developed that emits HTML slides.
+
+The talk will be held at the Erlangen.pm perl mongers group, possibly on May
+18th.
+
+The software is written out of an acute NIH syndrome, and for the lack of
+alternatives known to the author. It is by no means ready for general usage.
