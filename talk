@@ -24,7 +24,7 @@
 
 = Compiler
 
-    * mildew, perlito, elf, pugs, sprixel
+    * mildew, perlito, elf, pugs, sprixel, yapsi
     * Rakudo <http://rakudo.org/>
         => für die Beispiele hier
 
