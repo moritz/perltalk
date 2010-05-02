@@ -50,7 +50,11 @@ for my $block (@blocks) {
         my $type = $1;
         $body =~ s/^:\w+\h*\n//;
         say "slide type: $type";
-        $t->param(contents => "<pre>" . hilight($type, $body) . "</pre>");
+        if ($type eq 'raw') {
+            $t->param(contents => $body);
+        } else {
+            $t->param(contents => "<pre>" . hilight($type, $body) . "</pre>");
+        }
     } else {
         my $star_count =()= $body =~ /^\s*\*/mg;
         if ($star_count >= 2) {
