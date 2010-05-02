@@ -286,3 +286,29 @@
         say "parsed $url";
     }
 
+= Grammatiken - Proto Regexes (I)
+:perl6
+
+grammar URI {
+    token TOP { <schema> '://' <host>  [ ':' <port> ]?  <path> };
+    proto token schema { <...> }
+    token schema:sym<http>  { <sym> }
+    token schema:sym<https> { <sym> }
+    token schema:sym<ftp>   { <sym> }
+    ...
+}
+
+= Grammatiken - Proto Regexes (II)
+:perl6
+
+grammar URI::Other is URI {
+    # durch Vererbung neue Alternative hinzugefügt
+    token schema:sym<irc> { <sym> }
+}
+
+for URI, URI::Other -> $grammar {
+    for <http://perl6.org/ irc://freenode.org/#perl6> -> $url {
+        say $grammar.parse($url) ?? '[X]' !! '[ ]',
+            " $grammar.perl(), $url";
+    }
+}

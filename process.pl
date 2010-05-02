@@ -7,7 +7,9 @@ use HTML::Template::Compiled;
 use Text::VimColor;
 use Cache::FileCache;
 use Digest::MD5 qw(md5);
+use List::Util qw(min max);
 my $cache = Cache::FileCache->new();
+use Encode qw(encode_utf8 decode_utf8);
 
 sub template {
     HTML::Template::Compiled->new(
@@ -43,8 +45,10 @@ for my $block (@blocks) {
         title => $title,
         first => '0000.html',
         last  => sprintf('%04d.html', scalar(@blocks)),
-        next  => sprintf('%04d.html', $page_num + 1),
+        next  => sprintf('%04d.html', min scalar(@blocks), $page_num + 1),
         prev  => sprintf('%04d.html', $page_num - 1),
+        page_num    => $page_num,
+        total_page_count => scalar(@blocks),
     );
     if ($body =~ /^:(\w+)/) {
         my $type = $1;
@@ -116,9 +120,9 @@ sub hilight {
 
     my $s = Text::VimColor->new(
         filetype    => $type,
-        string      => $text,
+        string      => encode_utf8($text),
     );
-    $s = $s->html;
+    $s = decode_utf8($s->html);
     $cache->set($cachekey, $s);
     return $s;
 
