@@ -72,6 +72,10 @@ $page_num--;
     my $t = template();
     $t->param(
         title   => 'Index',
+        next    => '0001.html',
+        prev    => '0000.html',
+        first   => '0000.html',
+        last    => sprintf('%04d.html', scalar(@blocks)),
     );
     my $c = "<ul>\n";
     for my $i (0..$page_num) {

@@ -10,6 +10,8 @@
             pages['L'] = "<%var last  escape=js %>";
             pages['F'] = "<%var first escape=js %>";
             pages['I'] = "<%var first escape=js %>";
+            pages[' '] = pages['N'];
+            pages[String.fromCharCode(13)] = pages['N'];
             $(document).ready(function() {
                 $('body').keyup(function(e) {
                     var code = e.keyCode || e.which;

@@ -1,16 +1,21 @@
 /* Syntax Hilighting stuff from and for Text::VimColor */
 
 body {
-    font-size: 200%;
+    font-size: 200%; 
     background-color: white;
 }
 
 h1 {
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 code, pre {
     background-color: #CCC;
+}
+
+li {
+    margin: 0.2em;
+    list-style-image: url(bullet2.png);
 }
 
 .synComment    { color: #0000FF }
