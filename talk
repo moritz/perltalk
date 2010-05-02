@@ -28,7 +28,29 @@
     * Rakudo <http://rakudo.org/>
         => für die Beispiele hier
 
-= Wie Perl 5:
+= Rakudo
+
+   * Setzt auf der Parrot Virtual Machine auf 
+   * Kompiliert source code nach Bytecode, führt direkt aus
+   * Monatliche Releases
+   * Entwickler: v.a. Patrick Michaud, Jonathan Worthington
+
+= Rakudo installieren
+:text
+
+    git clone http://github.com/rakudo/rakudo.git
+    cd rakudo
+    perl Configure.pl --gen-parrot
+    make install
+    export PATH=$PATH:`pwd`/parrot_install/bin
+    perl6 -e 'say "success"'
+
+= Rakudo: Fortschritt
+:raw
+
+<img src="progress.png" />
+
+= Perl 6: Wie Perl 5:
 
     * Sigils an Variablen, :: für namespaces
     * Blocks mit `{...}`, subs mit `sub`
