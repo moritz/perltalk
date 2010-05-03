@@ -15,7 +15,7 @@
             pages[' '] = pages['N'];
             pages[String.fromCharCode(13)] = pages['N'];
             $(document).ready(function() {
-                $('body').keyup(function(e) {
+                $(document).keyup(function(e) {
                     var code = e.keyCode || e.which;
                     var go = pages[String.fromCharCode(code)];
                     if (go) {
