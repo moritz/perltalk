@@ -6,3 +6,11 @@ The talk will be held at the Erlangen.pm perl mongers group, possibly on May
 
 The software is written out of an acute NIH syndrome, and for the lack of
 alternatives known to the author. It is by no means ready for general usage.
+
+To generate the slides, run
+
+    perl process.pl
+
+Currently two HTML versions are generated: in out/0000.html, out/0001.html
+etc. a version with one file per slide. A second version is generated in
+s5/index.html, which contain all slides in one file (and requires javascript).

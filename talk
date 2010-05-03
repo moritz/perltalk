@@ -249,15 +249,17 @@
 = Regexes: Captures
 
     * `"abc" ~~ / ( a (b)) (c) /`
-    * Alle matches in `$/`
+    * Alle Captures in `$/`
     * `$0` = `$/[0]`, `$1` = `$/[1]` etc.
-    * Verschachtelte matches: `$/[0] eq "ab"`, `$/[0][0] eq "b"`, `$/[1] eq "c"`
+    * Verschachtelte Captures: `$/[0] eq "ab"`, `$/[0][0] eq "b"`,
+        `$/[1] eq "c"`
     * Match-Objekte sind Bäume
 
 = Regexes: Benannte Captures
 
     * `'abc23' ~~ /<alpha>+/`
     * Benannte captures: `$/<alpha>` = `$<alpha>`
+    * Match-Objekte verhalten sich wie Listen und Hashes
     * Da `<alpha>` quantifiziert ist, ist `$<alpha>` eine Liste
 
 = Grammatiken
@@ -318,3 +320,52 @@ for URI, URI::Other -> $grammar {
             " $grammar.perl(), $url";
     }
 }
+
+= Grammatiken - Daten extrahieren
+
+ * Jede regex führt optional nach dem matchen eine Methode aus
+ * Diese "reduction methods" bekommen das Match Object als Argument
+ * Jedes Match Object hat ein `ast` Attribut, das mit `make()` gesetzt werden
+   kann
+
+= Grammatiken - Resultatobjekte
+:perl6
+
+class URI::Storage {
+    has $.schema;
+    has $.host;
+    has $.port;
+    has $.path;
+    method Str {
+           $.schema ~ '://' ~ $.host
+        ~  ':' ( $.port || 80 )
+        ~  $.path;
+    }
+}
+
+
+= Grammatiken - Aktionen
+:perl6
+    
+class URI::Actions {
+    method TOP($/) {
+        my %attr;
+        for <schema port path host> {
+            %attr{$_} = ~$/{$_};
+        }
+        %attr<port> = ~$<port>[0] if $<port>;
+        make URI::Storage.new(|%attr);
+    }
+}
+
+= Grammatiken - Aktionen Einsetzen
+:perl6
+
+my $m = URI.parse('http://perl6.org/',
+            :actions(URI::Actions.new));
+
+my $uri = $m.ast;
+say $uri.WHAT;        # URI::Storage()
+say $uri.schema;      # http
+say $uri;             # http://perl6.org:80/
+

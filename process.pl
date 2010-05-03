@@ -110,7 +110,7 @@ $page_num--;
     }
     $c .= "</ul>\n";
     $t->param(contents => $c);
-    unshift @s5_slides, { title => 'Index', contents => $c };
+#    unshift @s5_slides, { title => 'Index', contents => $c };
     open my $out_fh, '>:encoding(UTF-8)', 'out/0000.html';
     print $out_fh $t->output;
     close $out_fh;
