@@ -245,6 +245,7 @@
     * `(?: )` => `[ ]`
     * Zeichenklassen `[a-z]` => `<[a..z]>`
     * Bennante regexes: `<alpha>`, `<panic("Syntax error")>`
+    * Quoting: `'...'` und `"..."`
 
 = Regexes: Captures
 
@@ -369,3 +370,16 @@ say $uri.WHAT;        # URI::Storage()
 say $uri.schema;      # http
 say $uri;             # http://perl6.org:80/
 
+= Zusammenfassung
+
+ * Bennante Regexes in Grammatiken organisiert
+ * Vererbung kann Regeln überschreiben und ergänzen
+ * Reduktionsmethoden können Datenstrukturen bauen
+
+= Danke für eure Aufmerksamkeit!
+:raw
+
+<center style="font-size: 200%">
+<p><strong>ENDE</strong></p>
+<h4>Fragen?</h4>
+</center>
