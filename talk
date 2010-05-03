@@ -76,7 +76,8 @@
             $words{$1}++;
         }
     }
-    my @top_keys = sort { $words{$b} <=> $words{$a} } keys %words;
+    my @top_keys = sort { $words{$b} <=> $words{$a} }
+                        keys %words;
     for (@top_keys[0..9]) {
         print "$words{$_}\t$_\n";
     }
@@ -85,6 +86,7 @@
 = Beispiel: Wörter zählen in Perl 6
 :perl6
 
+    use v6;
     my %words;
     for $*IN.lines -> $line {
         for $line.words {
@@ -262,7 +264,8 @@
 :perl6
 
     grammar URI {
-        token TOP { <schema> '://' <host>  [ ':' <port> ]?  <path> };
+        token TOP { <schema> '://' <host> 
+            [ ':' <port> ]?  <path> };
         token schema { <[a..z]>+ }
         token host   { [\w+] ** \. }
         token port   { \d+ }
@@ -280,7 +283,7 @@
         token schema { 'http' }
     }
 
-    for <http://perl6.org/ ftp://pause.cpan.org> -> $url {
+    for <http://perl6.org/ ftp://cpan.org> -> $url {
         my $m = URL::HTTP.parse($url);
         print "NOT " unless $m;
         say "parsed $url";
@@ -290,7 +293,9 @@
 :perl6
 
 grammar URI {
-    token TOP { <schema> '://' <host>  [ ':' <port> ]?  <path> };
+    token TOP { <schema> '://' <host>  
+        [ ':' <port> ]?  <path> };
+
     proto token schema { <...> }
     token schema:sym<http>  { <sym> }
     token schema:sym<https> { <sym> }
@@ -307,7 +312,8 @@ grammar URI::Other is URI {
 }
 
 for URI, URI::Other -> $grammar {
-    for <http://perl6.org/ irc://freenode.org/#perl6> -> $url {
+    for <http://perl6.org/
+            irc://freenode.org/#perl6> -> $url {
         say $grammar.parse($url) ?? '[X]' !! '[ ]',
             " $grammar.perl(), $url";
     }

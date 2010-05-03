@@ -3,6 +3,7 @@ use warnings;
 use 5.010;
 use autodie;
 binmode STDOUT, ':encoding(UTF-8)';
+use utf8;
 use HTML::Template::Compiled;
 use Text::VimColor;
 use Cache::FileCache;
@@ -19,6 +20,20 @@ sub template {
         default_escape  => 'html',
     );
 }
+
+my $s5 = HTML::Template::Compiled->new(
+    filename        => 's5.tmpl',
+    tagstyle        => [qw/+asp_chomp/],
+    open_mode       => ':utf8',
+    default_escape  => 'html',
+);
+$s5->param(
+    global_title    => 'Perl 6',
+    global_subtitle => 'Eine Einführung für Perl 5 Programmierer',
+    author          => 'Moritz Lenz <moritz@faui2k3.org>',
+    affiliation     => '#perl6',
+);
+my @s5_slides;
 
 my $in_file = $ARGV[0] // 'talk';
 my $text = do {
@@ -50,23 +65,26 @@ for my $block (@blocks) {
         page_num    => $page_num,
         total_page_count => scalar(@blocks),
     );
+    my $contents;
     if ($body =~ /^:(\w+)/) {
         my $type = $1;
         $body =~ s/^:\w+\h*\n//;
         say "slide type: $type";
         if ($type eq 'raw') {
-            $t->param(contents => $body);
+            $contents = $body;
         } else {
-            $t->param(contents => "<pre>" . hilight($type, $body) . "</pre>");
+            $contents =  "<pre>" . hilight($type, $body) . "</pre>";
         }
     } else {
         my $star_count =()= $body =~ /^\s*\*/mg;
         if ($star_count >= 2) {
-            $t->param(contents => render_list($body));
+           $contents = render_list($body);
         } else {
-            die "Don't know how to render slide $page_num";
+            die "Don't know how to render slide $page_num with title $title";
         }
     }
+    $t->param(contents => $contents);
+    push @s5_slides, { contents => $contents, title => $title };
     open my $out_fh, '>:encoding(UTF-8)', $fn;
     print $out_fh $t->output;
     close $out_fh;
@@ -92,9 +110,17 @@ $page_num--;
     }
     $c .= "</ul>\n";
     $t->param(contents => $c);
+    unshift @s5_slides, { title => 'Index', contents => $c };
     open my $out_fh, '>:encoding(UTF-8)', 'out/0000.html';
     print $out_fh $t->output;
     close $out_fh;
+}
+$s5->param('slides' => \@s5_slides);
+
+{
+    open my $s5_out, '>:encoding(UTF-8)', 's5/index.html';
+    print { $s5_out } $s5->output;
+    close $s5_out;
 }
 
 sub hilight {
