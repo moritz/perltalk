@@ -45,7 +45,7 @@
     export PATH=$PATH:`pwd`/parrot_install/bin
     perl6 -e 'say "success"'
 
-= Rakudo: Fortschritt
+= Rakudo: Fortschrit
 :raw
 
 <img src="progress.png" />
@@ -129,6 +129,7 @@
     * `@top_keys[0..9]` => `@top_pairs[^10]`
     * Array slice
     * `^10` ist kurz für `0..9`
+    * `say .value, "\t", .key;` Methodenaufrufen auf das `Pair`-Objekt in `$_`
 
 = Subs und Signaturen (I)
 :perl6
