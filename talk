@@ -131,6 +131,13 @@
     * `^10` ist kurz für `0..9`
     * `say .value, "\t", .key;` Methodenaufrufen auf das `Pair`-Objekt in `$_`
 
+= Unterschiede - Zusammenfassung
+
+    * Sigils invariant
+    * Viele Built-ins als Methoden verfügbar
+    * Einige Klammern optional
+    * `.foo` ist kurz für `$_.foo`
+
 = Subs und Signaturen (I)
 :perl6
 
@@ -197,6 +204,13 @@
 
     say 5!;         # 120
 
+= Subs - Zusammefassung
+
+    * Subs können Paramater haben
+    * Parameter können nach Positiona und Name gefüllt werden
+    * Mehrere Subs mit dem gleichen Namen möglich (Multis)
+    * Einschränkung nach Typ und mit Code möglich
+
 = Objektsystem
 :perl6
 
@@ -227,13 +241,19 @@
       `self` und Attribute
     * Klassen haben per Default einen Konstruktor `new`
 
+= Objektsystem - Zusammenfassung
+
+    * Deklaration von Klassen, Methoden und Attributen per Schlüsselwort
+    * Attribute: `$!attrib`, öffentlicher Zugriff `$.attrib'
+    * Vererbung mit `is`
+
 = Regexes
 
     * Literale: Buchstaben, Zahlen, \ + Interpunktion
     * Metasyntaktisch: \ + Buchstabe, Zahl; (alle) Interpunktion
     * Quantoren wie in Perl 5: `?, +, *`
     * `{12,23}` => `** 12..23`
-    ` `{3,}`    ?> `** 3..*`
+    * `{3,}`    => `** 3..*`
 
 = Whitespace in Regexes
 
@@ -283,11 +303,11 @@
 = Grammatiken - Vererbung
 :perl6
 
-    class URL::HTTP is URI {
+    grammar URL::HTTP is URI {
         token schema { 'http' }
     }
 
-    for <http://perl6.org/ ftp://cpan.org> -> $url {
+    for <http://perl6.org/ ftp://cpan.org/> -> $url {
         my $m = URL::HTTP.parse($url);
         print "NOT " unless $m;
         say "parsed $url";
