@@ -27,12 +27,6 @@ my $s5 = HTML::Template::Compiled->new(
     open_mode       => ':utf8',
     default_escape  => 'html',
 );
-$s5->param(
-    global_title    => 'Perl 6',
-    global_subtitle => 'Eine Einführung für Perl 5 Programmierer',
-    author          => 'Moritz Lenz <moritz@faui2k3.org>',
-    affiliation     => '#perl6',
-);
 my @s5_slides;
 
 my $in_file = $ARGV[0] // 'talk';
@@ -41,6 +35,22 @@ my $text = do {
     local $/;
     <$f>;
 };
+
+if ($text =~ /^-----/m) {
+    my $header;
+    ($header, $text) = split /^-----+\s*/m, $text, 2;
+    my @lines = grep length($_), split /\n+/, $header;
+    my %h = map { split /\s*:\s*/, $_, 2 } @lines;
+
+    $s5->param(
+        global_title    => $h{title},
+        global_subtitle => $h{subtitle},
+        author          => $h{author},
+        affiliation     => $h{affiliation},
+    );
+} else {
+    warn "No header!\n";
+}
 
 my $page_num = 1;
 my @blocks = grep { $_ } split /^= /m, $text;
