@@ -1,0 +1,180 @@
+title: Perl 6 and the Real World
+subtitle: Physical Modelling with Perl 6
+author: Moritz Lenz <moritz@faui2k3.org>
+affiliation: Max Planck Institute for the Science of Light
+------------
+
+= Perl 6 and the Real World - Structure
+
+    * What is a model? When is it a good model?
+    * A simple model
+    * Math: derivatives
+    * ...
+
+= What is a Model?
+
+    * Physics = striving to understand (parts of) the world
+    * The world is too complicated
+    * Models are descriptions that focus on one aspect
+    * So Model = Simplification
+
+= Example Model
+
+    # TODO: image of person on a swing
+
+    # + black'n'white schema
+
+= Model takes into account
+    
+    * Gravity
+    * Inertia
+    * Initial motion
+
+= Model neglects
+
+    * Colors
+    * Exact shapes
+    * size of object
+    * Friction
+
+= Is it a good model?
+
+   * It's a good model if it can answer a question for us
+   * Examples "how fast is the object?", "What is the swinging period?",
+       "Does the distance to the anchor point matter?"
+   * Accuracy of the answer important
+   * Every model needs input data. Is that available?
+   * Externsibilty
+
+= Another model: free falling
+
+# TODO: image
+
+= Free falling: Solved in Perl 6
+:perl6
+
+    use Math::Model;
+
+    my $m = Math::Model.new(
+        derivatives => {
+            velocity      => 'height',
+            acceleration  => 'velocity',
+        },
+        variables   => {
+            acceleration  => { $:gravity },   # m / s**2
+            gravity       => { -9.81 },       # m / s**2
+        },
+        initials    => {
+            height        => 50,              # m
+            velocity      => 0,               # m/s
+        },
+        captures    => ('height', 'velocity'),
+    );
+
+    $m.integrate(:from(0), :to(4.2), :min-resolution(0.2));
+    $m.render-svg('free-fall.svg', :title('Free falling'));
+
+= Model result
+
+# TODO: image
+
+= The model in detail
+
+:perl6
+
+    use Math::Model;
+
+    my $m = Math::Model.new(
+        derivatives => {
+            velocity      => 'height',
+            acceleration  => 'velocity',
+        },
+
+= Derivative: slope of another quantity
+
+# TODO: image explaning derivative
+
+= Common derivatives in Mechanics
+:text
+
+    Derivative          Of
+
+    velocity            position
+    angular velocity    angle
+    acceleration        velocity
+    power               energy
+    force               momentum
+                        (= mass * velocity)
+
+= Common derivatives
+:text
+
+    current             charge
+
+    birth  rate         population
+        - mortality rate
+
+    profit              funds
+
+= Using derivatives
+
+    * With Math::Model, you only need to know the derivatives,
+      note the values derived from
+    * You need an initial value for the derived quantity
+    * (Ordinary Differential Equation, which Math::Model integrates for you)
+
+= Extending the model
+
+    * Let's add a spring (force upwards)
+    * Some damping
+    * Damping is propotional to velocity, but in opposite direction
+
+= Spring, gravity, damping
+
+# TODO: source code
+
+= Spring, gravity, damping: results
+
+
+= Spring, gravity, damping: results
+
+ * It oscillates (surprise, surprise)
+ * it has an intrinsic frequency: "eigen frequency"
+ * Amplitude decreases due to damping
+
+= Further extensions
+
+ * Let's add an external, driving force
+ * Example: motor, coupled through a second spring
+
+= External driving force: Code
+
+# TODO: source code
+
+= External driving force: Result for low frequency
+:raw
+
+#TODO: images
+
+= External driving force: Observations
+
+    * Amplitude low for small frequencies
+    * Amplitude high for driving freq = eigen freq
+    * Amplitude goes to zero for very high frequencies
+
+= Amplitude vs. Frequency
+
+# TODO: image
+
+= Resonance controls
+
+    * tune of music instruments
+    * light absorption, thus color of objects
+    * heat transport in solids (phonons are lattice resonances)
+    * everything else :-)
+
+= String theories
+
+    * some physicists say that particles are just resonances
+    * the things that move are called "strings"
+    * think of it what you want :-)

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docname="swing-model.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Lend"
+       style="overflow:visible;">
+      <path
+         id="path3256"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) rotate(180) translate(1,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lstart"
+       style="overflow:visible">
+      <path
+         id="path3235"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective2444"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.175"
+     inkscape:cx="-77.312974"
+     inkscape:cy="758.50205"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1000"
+     inkscape:window-height="710"
+     inkscape:window-x="172"
+     inkscape:window-y="4" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <image
+       y="-798.99493"
+       x="-1161.5714"
+       id="image2446"
+       height="2057"
+       width="2106"
+       sodipodi:absref="/home/moritz/p6/talk/physics-images/swing-trans.jpg"
+       xlink:href="swing-trans.jpg"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/swing-model.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996" />
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#686868;stroke-width:2.29999995;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path2450"
+       sodipodi:cx="-57.142857"
+       sodipodi:cy="-541.92352"
+       sodipodi:rx="31.428572"
+       sodipodi:ry="31.428572"
+       d="M -25.714285,-541.92352 A 31.428572,31.428572 0 1 1 -88.571428,-541.92352 A 31.428572,31.428572 0 1 1 -25.714285,-541.92352 z"
+       transform="translate(34.285714,5.7142857)"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/swing-model.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996" />
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#686868;stroke-width:2.29999995;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path3222"
+       sodipodi:cx="-57.142857"
+       sodipodi:cy="-541.92352"
+       sodipodi:rx="31.428572"
+       sodipodi:ry="31.428572"
+       d="M -25.714285,-541.92352 A 31.428572,31.428572 0 1 1 -88.571428,-541.92352 A 31.428572,31.428572 0 1 1 -25.714285,-541.92352 z"
+       transform="translate(394.28572,1211.4285)"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/swing-model.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996" />
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#686868;stroke-width:2.29999995;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path3224"
+       sodipodi:cx="-57.142857"
+       sodipodi:cy="-541.92352"
+       sodipodi:rx="31.428572"
+       sodipodi:ry="31.428572"
+       d="M -25.714285,-541.92352 A 31.428572,31.428572 0 1 1 -88.571428,-541.92352 A 31.428572,31.428572 0 1 1 -25.714285,-541.92352 z"
+       transform="translate(345.71429,939.99999)"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/swing-model.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996" />
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:7.4000001;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="M 283.13928,382.24265 L 334.00359,656.76742 L 334.37068,653.93396"
+       id="path3226"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/swing-model.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996" />
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.9;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="M -17.142857,-536.20925 L 311.42857,538.07647"
+       id="path3228"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/swing-model.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996" />
+    <path
+       style="opacity:1;fill:#0000ff;fill-opacity:1;fill-rule:nonzero;stroke:#0000ff;stroke-width:6.1;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="M 337.14286,669.50504 L 337.14286,1092.3622"
+       id="path5040"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/swing-model.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996" />
+    <text
+       xml:space="preserve"
+       style="font-size:144px;font-style:normal;font-weight:bold;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans Bold"
+       x="360"
+       y="1023.7908"
+       id="text6601"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/swing-model.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996"><tspan
+         sodipodi:role="line"
+         id="tspan6603"
+         x="360"
+         y="1023.7908">Fg</tspan></text>
+    <path
+       style="opacity:1;fill:#0000ff;fill-opacity:1;fill-rule:nonzero;stroke:#0000ff;stroke-width:3.38390183;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="M 344.38173,670.7696 L 8.5596233,835.84945"
+       id="path6605"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/swing-model.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996" />
+    <text
+       xml:space="preserve"
+       style="font-size:144px;font-style:normal;font-weight:bold;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans Bold"
+       x="27.251116"
+       y="769.3114"
+       id="text6607"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/swing-model.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996"><tspan
+         sodipodi:role="line"
+         id="tspan6609"
+         x="27.251116"
+         y="769.3114">v</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:144;font-style:normal;font-weight:bold;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="360"
+       y="492.36218"
+       id="text6611"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/swing-model.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996"><tspan
+         sodipodi:role="line"
+         id="tspan6613"
+         x="360"
+         y="492.36218">m</tspan></text>
+  </g>
+</svg>
