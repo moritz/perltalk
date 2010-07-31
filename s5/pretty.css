@@ -98,6 +98,7 @@ html>body .external {border-bottom: none;}
 img.incremental {visibility: hidden;}
 .slide .current {color: #B02;}
 
+.slide > img { margin-top: 2em; margin-left: auto; margin-right: auto }
 
 /* diagnostics
 

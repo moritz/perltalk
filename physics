@@ -9,7 +9,8 @@ affiliation: Max Planck Institute for the Science of Light
     * What is a model? When is it a good model?
     * A simple model
     * Math: derivatives
-    * ...
+    * Free fall, spring
+    * Resonance
 
 = What is a Model?
 
@@ -19,10 +20,15 @@ affiliation: Max Planck Institute for the Science of Light
     * So Model = Simplification
 
 = Example Model
+:raw
 
-    # TODO: image of person on a swing
+<img src="swing-s.jpg" />
 
-    # + black'n'white schema
+= Example Model
+:raw
+
+<img src="swing-model-s.png" />
+
 
 = Model takes into account
     
@@ -47,8 +53,9 @@ affiliation: Max Planck Institute for the Science of Light
    * Externsibilty
 
 = Another model: free falling
+:raw
 
-# TODO: image
+<img src="s-free-fall-model.png" />
 
 = Free falling: Solved in Perl 6
 :perl6
@@ -64,6 +71,12 @@ affiliation: Max Planck Institute for the Science of Light
             acceleration  => { $:gravity },   # m / s**2
             gravity       => { -9.81 },       # m / s**2
         },
+        # ...
+
+= Free falling: Solved in Perl 6
+:perl6
+
+        # ...
         initials    => {
             height        => 50,              # m
             velocity      => 0,               # m/s
@@ -75,11 +88,11 @@ affiliation: Max Planck Institute for the Science of Light
     $m.render-svg('free-fall.svg', :title('Free falling'));
 
 = Model result
+:raw
 
-# TODO: image
+<img src="s-free-fall.png" />
 
 = The model in detail
-
 :perl6
 
     use Math::Model;
@@ -91,8 +104,9 @@ affiliation: Max Planck Institute for the Science of Light
         },
 
 = Derivative: slope of another quantity
+:raw
 
-# TODO: image explaning derivative
+<img src="derivative.png" />
 
 = Common derivatives in Mechanics
 :text
@@ -123,17 +137,51 @@ affiliation: Max Planck Institute for the Science of Light
     * You need an initial value for the derived quantity
     * (Ordinary Differential Equation, which Math::Model integrates for you)
 
-= Extending the model
+= Rest of the model
+:perl6
 
-    * Let's add a spring (force upwards)
-    * Some damping
-    * Damping is propotional to velocity, but in opposite direction
+        variables   => {
+            acceleration  => { $:gravity },   # m / s**2
+            gravity       => { -9.81 },       # m / s**2
+        },
+        initials    => {
+            height        => 50,              # m
+            velocity      => 0,               # m/s
+        },
+        captures    => ('height', 'velocity'),
+    );
 
-= Spring, gravity, damping
+    $m.integrate(:from(0), :to(4.2), :min-resolution(0.2));
+    $m.render-svg('free-fall.svg', :title('Free falling'));
 
-# TODO: source code
+= Perl 6 stuff
+    
+    * `$:height` is a named parameter
+    * `Math::Model` introspects code blocks for arguments
+    * calculates dependencies => execution order
+    * RungeKutta integration
+
+= Extending the model - Spring, damping
+:raw
+
+<img src="s-spring-model.png" />
+
+= Spring, gravity, damping: source code
+:perl6
+    # ...
+    variables   => {
+        acceleration  => { $:gravity + $:spring + $:damping },
+        gravity       => { -9.81 },
+        spring        => { - 2 * $:height },
+        damping       => { - 0.2 * $:velocity },
+    },
+    # ...
+
 
 = Spring, gravity, damping: results
+:raw
+
+<img src="spring-damping-result.png" />
 
 
 = Spring, gravity, damping: results
@@ -148,13 +196,55 @@ affiliation: Max Planck Institute for the Science of Light
  * Example: motor, coupled through a second spring
 
 = External driving force: Code
+:perl6
 
-# TODO: source code
+sub MAIN($freq) {
+  my $m = Math::Model.new(
+    # ...
+    variables   => {
+      acceleration  => { $:gravity + $:spring
+                          + $:damping + $:ext_force },
+      gravity       => { -9.81 },
+      spring        => { - 2 * $:height },
+      damping       => { - 0.2 * $:velocity },
+      ext_force     => { sin(2 * pi * $:time * $freq) },
+    },
+    # ...
+  );
 
-= External driving force: Result for low frequency
+  my %h = $m.integrate(:from(0), :to(70), :min-resolution(5));
+  $m.render-svg("spring-freq-$freq.svg", 
+     :title("Spring with damping, external force at $freq"));
+
+= Driving force: low frequency
 :raw
 
-#TODO: images
+<img src="spring-freq-0.04.png" />
+
+= Driving force: higher frequency
+:raw
+
+<img src="spring-freq-0.06.png" />
+
+= Driving force: higher frequency
+:raw
+
+<img src="spring-freq-0.2.png" />
+
+= Driving force: higher frequency
+:raw
+
+<img src="spring-freq-0.22.png" />
+
+= Driving force: higher frequency
+:raw
+
+<img src="spring-freq-0.26.png" />
+
+= Driving force: higher frequency
+:raw
+
+<img src="spring-freq-0.48.png" />
 
 = External driving force: Observations
 
@@ -163,10 +253,11 @@ affiliation: Max Planck Institute for the Science of Light
     * Amplitude goes to zero for very high frequencies
 
 = Amplitude vs. Frequency
+:raw
 
-# TODO: image
+<img src="resonance.png" height="440" />
 
-= Resonance controls
+= Resonance controls ...
 
     * tune of music instruments
     * light absorption, thus color of objects
@@ -178,3 +269,10 @@ affiliation: Max Planck Institute for the Science of Light
     * some physicists say that particles are just resonances
     * the things that move are called "strings"
     * think of it what you want :-)
+
+= Summary
+
+    * Physical models: simplifcation to essentials
+    * `Math::Model` integrates models for you
+    * Oscillator: initial motion + force in opposite direction
+    * Resonance if driving frequency is close to eigen frequency
