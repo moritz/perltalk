@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docname="spring-model.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="/home/moritz/p6/talk/physics-images/spring-model.png"
+   inkscape:export-xdpi="8.1899996"
+   inkscape:export-ydpi="8.1899996">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path3233"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lstart"
+       style="overflow:visible">
+      <path
+         id="path3230"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective2427"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="490.3236"
+     inkscape:cy="548.22824"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="897"
+     inkscape:window-height="674"
+     inkscape:window-x="127"
+     inkscape:window-y="17"
+     inkscape:snap-global="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2389" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <image
+       y="88.076462"
+       x="48.214279"
+       id="image2429"
+       height="740"
+       width="555"
+       sodipodi:absref="/home/moritz/p6/talk/physics-images/leaning-more.jpg"
+       xlink:href="leaning-more.jpg"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/free-fall-model.jpg.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996"
+       style="opacity:0.68049793" />
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:6.0999999;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path2433"
+       sodipodi:cx="540.71429"
+       sodipodi:cy="335.93362"
+       sodipodi:rx="12.142858"
+       sodipodi:ry="12.142858"
+       d="M 552.85715,335.93362 A 12.142858,12.142858 0 1 1 528.57144,335.93362 A 12.142858,12.142858 0 1 1 552.85715,335.93362 z"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/free-fall-model.jpg.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996"
+       transform="translate(-6.4075448,191.29731)" />
+    <path
+       style="font-size:144px;opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#646464;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:url(#Arrow1Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="M 534.27806,531.48115 L 534.27806,686.58548"
+       id="path3225"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/free-fall-model.jpg.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996" />
+    <text
+       xml:space="preserve"
+       style="font-size:72px;font-style:normal;font-weight:bold;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="535.88757"
+       y="645.17218"
+       id="text5043"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/free-fall-model.jpg.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996"><tspan
+         sodipodi:role="line"
+         id="tspan5045"
+         x="535.88757"
+         y="645.17218">Fg</tspan></text>
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="M 535.4483,322.66251 L 535.4483,341.04697 L 549.23665,354.83532 L 522.57918,382.87163 L 549.23665,408.15027 L 522.57918,437.56541 L 549.01773,463.37539 L 521.7182,490.67492 L 535.69297,505.62467 L 535.36797,518.94943"
+       id="path2391" />
+    <path
+       style="font-size:144px;opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#646464;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:url(#Arrow1Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="M 499.40857,527.89355 L 499.40857,409.29752"
+       id="path3175"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/free-fall-model.jpg.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996" />
+    <text
+       xml:space="preserve"
+       style="font-size:72px;font-style:normal;font-weight:bold;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans Bold"
+       x="375.54309"
+       y="494.87271"
+       id="text3177"><tspan
+         sodipodi:role="line"
+         id="tspan3179"
+         x="375.54309"
+         y="494.87271">Fs</tspan></text>
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:6.0999999;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path3181"
+       sodipodi:cx="540.71429"
+       sodipodi:cy="335.93362"
+       sodipodi:rx="12.142858"
+       sodipodi:ry="12.142858"
+       d="M 552.85715,335.93362 A 12.142858,12.142858 0 1 1 528.57144,335.93362 A 12.142858,12.142858 0 1 1 552.85715,335.93362 z"
+       inkscape:export-filename="/home/moritz/p6/talk/physics-images/free-fall-model.jpg.png"
+       inkscape:export-xdpi="8.1899996"
+       inkscape:export-ydpi="8.1899996"
+       transform="matrix(0.5678238,0,0,0.5678238,229.86563,134.80632)" />
+  </g>
+</svg>
