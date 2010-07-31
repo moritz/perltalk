@@ -1,3 +1,4 @@
+#!/usr/bin/env perl
 use strict;
 use warnings;
 use 5.010;
@@ -55,10 +56,14 @@ if ($text =~ /^-----/m) {
 my $page_num = 1;
 my @blocks = grep { $_ } split /^= /m, $text;
 my @titles = ('Index');
+
+my $out_dir = 'out-' . $in_file;
+mkdir $out_dir unless -d $out_dir;
+
 for my $block (@blocks) {
 
     my $prev = sprintf '%04d.html',     $page_num - 1;
-    my $fn   = sprintf 'out/%04d.html', $page_num;
+    my $fn   = sprintf '%s/%04d.html',  $out_dir, $page_num;
 
     my ($title, $body) = split /\n/, $block, 2;
     say "$page_num $title";
@@ -68,7 +73,7 @@ for my $block (@blocks) {
     $t->param(
         normal_page    => 1,
         title => $title,
-        first => '0000.html',
+        first => sprintf('%04d.html', 0),
         last  => sprintf('%04d.html', scalar(@blocks)),
         next  => sprintf('%04d.html', min scalar(@blocks), $page_num + 1),
         prev  => sprintf('%04d.html', $page_num - 1),
@@ -90,7 +95,7 @@ for my $block (@blocks) {
         if ($star_count >= 2) {
            $contents = render_list($body);
         } else {
-            die "Don't know how to render slide $page_num with title $title";
+            die "Don't know how to render slide $page_num with title '$title'";
         }
     }
     $t->param(contents => $contents);
