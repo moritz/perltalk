@@ -14,10 +14,10 @@ affiliation: Max Planck Institute for the Science of Light
 
 = What is a Model?
 
-    * Physics = striving to understand (parts of) the world
-    * The world is too complicated
-    * Models are descriptions that focus on one aspect
-    * So Model = Simplification
+    * physics = striving to understand (parts of) the world
+    * the world is too complicated
+    * models are descriptions that focus on one aspect
+    * so Model = Simplification
 
 = Example Model
 :raw
@@ -32,25 +32,26 @@ affiliation: Max Planck Institute for the Science of Light
 
 = Model takes into account
     
-    * Gravity
-    * Inertia
-    * Initial motion
+    * gravity
+    * inertia
+    * initial motion
+    * connection to anchor point
 
 = Model neglects
 
-    * Colors
-    * Exact shapes
+    * colors
+    * exact shapes
     * size of object
-    * Friction
+    * friction
 
 = Is it a good model?
 
-   * It's a good model if it can answer a question for us
-   * Examples "how fast is the object?", "What is the swinging period?",
+   * it's a good model if it can answer a question for us
+   * examples "how fast is the object?", "What is the swinging period?",
        "Does the distance to the anchor point matter?"
-   * Accuracy of the answer important
-   * Every model needs input data. Is that available?
-   * Externsibilty
+   * accuracy of the answer important
+   * every model needs input data. Is that available?
+   * externsibilty
 
 = Another model: free falling
 :raw
@@ -132,9 +133,9 @@ affiliation: Max Planck Institute for the Science of Light
 
 = Using derivatives
 
-    * With Math::Model, you only need to know the derivatives,
+    * with Math::Model, you only need to know the derivatives,
       note the values derived from
-    * You need an initial value for the derived quantity
+    * you need an initial value for the derived quantity
     * (Ordinary Differential Equation, which Math::Model integrates for you)
 
 = Rest of the model
@@ -183,12 +184,6 @@ affiliation: Max Planck Institute for the Science of Light
 
 <img src="spring-damping-result.png" />
 
-
-= Spring, gravity, damping: results
-
- * It oscillates (surprise, surprise)
- * it has an intrinsic frequency: "eigen frequency"
- * Amplitude decreases due to damping
 
 = Further extensions
 
@@ -248,9 +243,9 @@ sub MAIN($freq) {
 
 = External driving force: Observations
 
-    * Amplitude low for small frequencies
-    * Amplitude high for driving freq = eigen freq
-    * Amplitude goes to zero for very high frequencies
+    * amplitude low for small frequencies
+    * amplitude high for driving freq = eigen freq
+    * amplitude goes to zero for very high frequencies
 
 = Amplitude vs. Frequency
 :raw
@@ -272,7 +267,7 @@ sub MAIN($freq) {
 
 = Summary
 
-    * Physical models: simplifcation to essentials
+    * physical models: simplifcation to essentials
     * `Math::Model` integrates models for you
-    * Oscillator: initial motion + force in opposite direction
-    * Resonance if driving frequency is close to eigen frequency
+    * oscillator: initial motion + force in opposite direction
+    * resonance if driving frequency is close to eigen frequency
