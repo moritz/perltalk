@@ -2,7 +2,7 @@
 
 /* Text::VimColor hilighting */
 .synComment    { color: #0000FF }
-.synConstant   { color: #FF00FF }
+.synConstant   { color: #005500 }
 .synIdentifier { color: #008B8B }
 .synStatement  { color: #A52A2A ; font-weight: bold }
 .synPreProc    { color: #A020F0 }

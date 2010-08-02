@@ -51,7 +51,7 @@ affiliation: Max Planck Institute for the Science of Light
        "Does the distance to the anchor point matter?"
    * accuracy of the answer important
    * every model needs input data. Is that available?
-   * externsibilty
+   * extensibilty
 
 = Another model: free falling
 :raw
@@ -126,7 +126,7 @@ affiliation: Max Planck Institute for the Science of Light
 
     current             charge
 
-    birth  rate         population
+    birth rate          population
         - mortality rate
 
     profit              funds
