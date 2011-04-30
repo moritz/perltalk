@@ -99,7 +99,7 @@ for my $block (@blocks) {
         }
     }
     $t->param(contents => $contents);
-    push @s5_slides, { contents => $contents, title => $title };
+    push @s5_slides, { contents => $contents, title => $title, page => $page_num };
     open my $out_fh, '>:encoding(UTF-8)', $fn;
     print $out_fh $t->output;
     close $out_fh;
@@ -140,7 +140,7 @@ $s5->param('slides' => \@s5_slides);
 
 sub hilight {
     my ($type, $text) = @_;
-    my $cachekey = md5("$type|$text");
+    my $cachekey = md5(encode_utf8 "$type|$text");
     my $c = $cache->get($cachekey);
     return $c if defined $c;
 
