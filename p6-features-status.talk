@@ -1,0 +1,137 @@
+title: Perl 6 - Features und Status
+subtitle: Die Zukunft ist hier, nur ungleichmaessig verteilt
+author: Moritz Lenz <moritz@faui2k3.org>
+affiliation: #perl6
+-----------
+
+= Perl 6 - Übersicht
+
+    * Allgemeines
+    * Compiler-Uebersicht
+    * Features
+
+= Was ist Perl 6?
+
+    * Sprachspezifikation
+    * Mehrere Compiler
+        (wie bei C, C++, Fortran, python, ...)
+    * Test suite
+    * Modulsystem
+
+= Beziehung zu Perl 5
+
+    * Als Nachfolger von Perl 5 gedacht
+    * Aber Perl 5 wurde weiter entwickelt
+    * "Two languages from the Perl family" --  Larry Wall
+
+= Compiler
+
+    * Rakudo <http://rakudo.org/>
+    * Niecza <https://github.com/sorear/niecza>
+
+= Rakudo
+
+   * Setzt auf der Parrot Virtual Machine auf 
+   * Ziel: benutzbar fuer moeglichst viele User
+   * Kompiliert source code nach Bytecode, führt direkt aus
+   * Monatliche Releases
+   * Entwickler: Jonathan Worthington, Patrick Michaud, Moritz Lenz, Carl
+     Masak
+
+= Niecza
+
+    * Baut auf CLR (Mono/.NET) auf
+    * Ziel: Mit Optimierungen experimentieren
+    * Name kommt von "Nie mamy czas", "wir haben keine Zeit"
+    * Monatliche Releases
+    * Entwickler: Stefan O'Rear, Solomon Foster
+
+= Vergleich von Rakudo und Niecza
+
+    * Bestehen vergleichbare Anzahl von Tests
+    * Rakudo haeufig schnneller beim kompilieren, Niecza fast immer schneller
+      zur Laufzeit
+    * Rakudos Staerken: Objektsystem, built-ins, binary IO, C-Funktionen
+      aufrufen (via NativeCall.pm)
+    * Nieczas Staerken: Regexes/Grammars, Unicode, gute
+      Syntax-Fehlermeldungen, Integration mit CLR-Bibliotheken
+
+
+= Perl 6 Features: Basics
+:features(r+ n+)
+
+    * Variablen
+    * Kontrollstrukturen
+    * Basistypen (`St`, `Int`, `Rat`, `List`, `Array`, `Hash`)
+    * Funktionen
+
+= Klassen
+:features(r+ n+)
+:perl6
+
+    class Task {
+        has &.action;
+        has Bool $.done = False;
+        has @.dependencies;
+
+        method do {
+            last if $.done;
+            .do for @.dependencies;  # resolve dependencies
+            &.action();              # perform the action
+            $!done = True;
+        }
+    }
+
+= Klassen: Objekte benutzen
+:features(r+ n+)
+:perl6
+
+    my $root = Task.new(
+        :action( { say 'Eat breakfast' }),
+        :dependencies[
+            Task.new( :action( { say 'Prepare breakfast' } ) ),
+            Task.new( :action( { say 'Set the table' } ) ),
+        ]
+    );
+    $root.do;
+
+    # output:
+    Set the table
+    Wake girlfriend
+    Eat breakfast
+
+
+= Klassen: Delegation
+:features(r+ n-)
+:perl6
+
+    class Task {
+        ...
+        # method 'add-dependency' is handled
+        # by @!dependenies.push
+        has @.dependencies handles
+            add-dependency => 'push';
+        ...
+    }
+    ...
+    $root.add-dependency(
+        Task.new( :action( { say 'Wake girlfriend' } ) );
+    );
+
+
+= Rollen
+:features(r+ n+)
+:perl6
+
+    role A { }
+
+
+    
+
+= Danke für eure Aufmerksamkeit!
+:raw
+
+<center style="font-size: 200%">
+<p><strong>ENDE</strong></p>
+<h4>Fragen?</h4>
+</center>
