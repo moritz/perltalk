@@ -22,12 +22,16 @@ affiliation: Max Planck Institute for the Science of Light
 = Example Model
 :raw
 
-<img src="swing-s.jpg" />
+<center>
+<img src="s-swing.jpg" />
+</center>
 
 = Example Model
 :raw
 
-<img src="swing-model-s.png" />
+<center>
+<img src="s-swing-model.png" />
+</center>
 
 
 = Model takes into account
@@ -56,7 +60,9 @@ affiliation: Max Planck Institute for the Science of Light
 = Another model: free falling
 :raw
 
+<center>
 <img src="s-free-fall-model.png" />
+</center>
 
 = Free falling: Solved in Perl 6
 :perl6
@@ -91,7 +97,9 @@ affiliation: Max Planck Institute for the Science of Light
 = Model result
 :raw
 
+<center>
 <img src="s-free-fall.png" />
+</center>
 
 = The model in detail
 :perl6
@@ -107,7 +115,9 @@ affiliation: Max Planck Institute for the Science of Light
 = Derivative: slope of another quantity
 :raw
 
-<img src="derivative.png" />
+<center>
+<img src="s-derivative.png" />
+</center>
 
 = Common derivatives in Mechanics
 :text
@@ -165,7 +175,9 @@ affiliation: Max Planck Institute for the Science of Light
 = Extending the model - Spring, damping
 :raw
 
+<center>
 <img src="s-spring-model.png" />
+</center>
 
 = Spring, gravity, damping: source code
 :perl6
@@ -182,7 +194,9 @@ affiliation: Max Planck Institute for the Science of Light
 = Spring, gravity, damping: results
 :raw
 
+<center>
 <img src="spring-damping-result.png" />
+</center>
 
 
 = Further extensions
@@ -214,32 +228,44 @@ sub MAIN($freq) {
 = Driving force: low frequency
 :raw
 
+<center>
 <img src="spring-freq-0.04.png" />
+</center>
 
 = Driving force: higher frequency
 :raw
 
+<center>
 <img src="spring-freq-0.06.png" />
+</center>
 
 = Driving force: higher frequency
 :raw
 
+<center>
 <img src="spring-freq-0.2.png" />
+</center>
 
 = Driving force: higher frequency
 :raw
 
+<center>
 <img src="spring-freq-0.22.png" />
+</center>
 
 = Driving force: higher frequency
 :raw
 
+<center>
 <img src="spring-freq-0.26.png" />
+</center>
 
 = Driving force: higher frequency
 :raw
 
+<center>
 <img src="spring-freq-0.48.png" />
+</center>
 
 = External driving force: Observations
 
@@ -250,7 +276,9 @@ sub MAIN($freq) {
 = Amplitude vs. Frequency
 :raw
 
+<center>
 <img src="resonance.png" height="440" />
+</center>
 
 = Resonance controls ...
 
@@ -264,6 +292,13 @@ sub MAIN($freq) {
     * some physicists say that particles are just resonances
     * the things that move are called "strings"
     * think of it what you want :-)
+
+= Limits of Math::Model
+
+    * some fields of physics require other mathematical techniques
+    * many need partial differential equations
+    * no quantum mechanics
+    * no fluid dynamics
 
 = Summary
 

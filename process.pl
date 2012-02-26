@@ -80,20 +80,23 @@ for my $block (@blocks) {
         page_num    => $page_num,
         total_page_count => scalar(@blocks),
     );
-    my $contents;
+    my $contents = '';
+    if ($body =~ s/^:features\(([^\)]+)\)\s+//) {
+        $contents = features("$1");
+    }
     if ($body =~ /^:(\w+)/) {
         my $type = $1;
         $body =~ s/^:\w+\h*\n//;
         say "slide type: $type";
         if ($type eq 'raw') {
-            $contents = $body;
+            $contents .= $body;
         } else {
-            $contents =  "<pre>" . hilight($type, $body) . "</pre>";
+            $contents .=  "<pre>" . hilight($type, $body) . "</pre>";
         }
     } else {
         my $star_count =()= $body =~ /^\s*\*/mg;
         if ($star_count >= 2) {
-           $contents = render_list($body);
+           $contents .= render_list($body);
         } else {
             die "Don't know how to render slide $page_num with title '$title'";
         }
@@ -205,4 +208,22 @@ sub escape {
     );
     $s =~ s/([&"<>])/$escapes{$1}/g;
     return $s;
+}
+
+sub features {
+    my $feature_string = shift;
+    my @f = split ' ', $feature_string;
+    my %map = (r => 'Rakudo', n => 'Niecza');
+    my @r;
+    for (@f) {
+        if (/^(\w)([+-])/) {
+            my $impl = $map{$1};
+            my $descr = $2 eq '+' ? 'Works with' : "Doesn't work with";
+            push @r, "$descr $impl";
+
+        } else {
+            die "Can't handle feature string '$_'";
+        }
+    }
+    return qq[<div class="features">] . join("<br />\n", @r) . '</div>';
 }
