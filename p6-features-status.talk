@@ -36,7 +36,7 @@ affiliation: #perl6
    * Kompiliert source code nach Bytecode, führt direkt aus
    * Monatliche Releases
    * Entwickler: Jonathan Worthington, Patrick Michaud, Moritz Lenz, Carl
-     Masak
+     Masak, Tadeusz Sośnierz, Solomon Foster
 
 = Niecza
 
@@ -269,6 +269,37 @@ affiliation: #perl6
     # BOOM:
     # Method 'x' must be implemented by 'B' because it is
     # required by role A 
+
+= Regexes
+:features(r+ n+)
+:perl6
+
+    my $text = 'This contains a double double word';
+    if $text ~~ / « (\w+) \s+  $0 » / {
+        say "Duplicate word '$0' found";
+    }
+
+    # output: Duplicate word 'double' found
+
+= Grammatiken
+:features(r+ n+)
+
+    * Grammatiken sind Klassen, die benannte Regexes enthalten
+    * Bieten die volle Flexibilität des Objektsystems
+    * Machen es viel leichter, Regexes wiederzuverwenden
+
+= Grammatiken
+:features(r+ n+)
+:perl6
+
+    grammar Number {
+        token TOP { ^ [ <int> | <hex> ] $ }
+        token int { \d+ }
+        token hex { '0x' (<[a..f A..F 0..9]>+) }
+    }
+    Number.parse('0xDEADBEEF');
+    say $/.keys;        # int
+    say $<hex>[0].Str;  # DEADBEEF
 
 
 = Danke für eure Aufmerksamkeit!
