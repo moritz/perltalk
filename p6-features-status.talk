@@ -203,8 +203,8 @@ affiliation: #perl6
     $root.do;
 
     # output:
+    Prepare breakfast
     Set the table
-    Wake girlfriend
     Eat breakfast
 
 
