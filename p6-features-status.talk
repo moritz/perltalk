@@ -301,6 +301,13 @@ affiliation: #perl6
     say $/.keys;        # int
     say $<hex>[0].Str;  # DEADBEEF
 
+= Longest-Token Matching
+:features(r- n+)
+
+    * In `|`-Alternativen gewinnt der längste Match
+    * Hilfreich, wenn man durch Vererbung Regexes hinzufügt (Reihenfolge
+      irrelevant)
+
 
 = Danke für eure Aufmerksamkeit!
 :raw
