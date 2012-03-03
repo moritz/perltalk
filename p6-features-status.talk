@@ -1,5 +1,5 @@
 title: Perl 6 - Features und Status
-subtitle: Die Zukunft ist hier, nur ungleichmaessig verteilt
+subtitle: Die Zukunft ist hier, nur ungleichmässig verteilt
 author: Moritz Lenz <moritz@faui2k3.org>
 affiliation: #perl6
 -----------
@@ -49,11 +49,11 @@ affiliation: #perl6
 = Vergleich von Rakudo und Niecza
 
     * Bestehen vergleichbare Anzahl von Tests
-    * Rakudo haeufig schnneller beim kompilieren, Niecza fast immer schneller
+    * Rakudo häufig schnneller beim kompilieren, Niecza fast immer schneller
       zur Laufzeit
-    * Rakudos Staerken: Objektsystem, built-ins, binary IO, C-Funktionen
+    * Rakudos Stärken: Objektsystem, built-ins, binary IO, C-Funktionen
       aufrufen (via NativeCall.pm)
-    * Nieczas Staerken: Regexes/Grammars, Unicode, gute
+    * Nieczas Stärken: Regexes/Grammars, Unicode, gute
       Syntax-Fehlermeldungen, Integration mit CLR-Bibliotheken
 
 
@@ -64,6 +64,24 @@ affiliation: #perl6
     * Kontrollstrukturen
     * Basistypen (`St`, `Int`, `Rat`, `List`, `Array`, `Hash`)
     * Funktionen
+
+= Junctions
+:features(r+ n+)
+:perl6
+
+    my @dice = (1..6).roll(2);
+    if @dice.join eq '12' | '21' {
+        #            ^^^^^^^^^^^  Junction
+        say 'Mäxchen!';
+    }
+
+= Junctions: Typen
+:features(r+ n+)
+
+    * `any` oder `|`: mindestens ein Treffer
+    * `all` oder `&`: alle müssen passen
+    * `one` oder `^`: genau ein Treffer
+    * `none`: kein Treffer
 
 = Subroutinen, Signaturen
 :features(r+ n+)
