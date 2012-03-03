@@ -194,10 +194,10 @@ affiliation: #perl6
 :perl6
 
     my $root = Task.new(
-        :action( { say 'Eat breakfast' }),
+        :action({ say 'Eat breakfast' }),
         :dependencies[
-            Task.new( :action( { say 'Prepare breakfast' } ) ),
-            Task.new( :action( { say 'Set the table' } ) ),
+          Task.new(:action({ say 'Prepare breakfast' })),
+          Task.new(:action({ say 'Set the table' })),
         ]
     );
     $root.do;
