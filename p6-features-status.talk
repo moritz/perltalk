@@ -65,6 +65,95 @@ affiliation: #perl6
     * Basistypen (`St`, `Int`, `Rat`, `List`, `Array`, `Hash`)
     * Funktionen
 
+= Subroutinen, Signaturen
+:features(r+ n+)
+:perl6
+
+    sub greet($who) {
+        say "hello $who"
+    }
+    greet("GPW");       # hello GPW
+    say &greet.WHAT;    # Sub()
+
+= Signaturen: Variable Anzahl von Argumenten
+:features(r+ n+)
+:perl6
+
+    sub up-join($sep, *@items) {
+        join $sep, map &uc, @items
+    }
+    say up-join ", ", <a b c>   # A, B, C
+
+= Typen I
+:features(r+ n+)
+:perl6
+
+    sub square(Numeric $x) {
+        $x * $x
+    }
+    say square(42);     # 1764
+    my $x = 'foo';
+    square($x); # BOOM
+
+= Interessante Typen: Zahlen
+:features(r+ n+)
+
+    * `Int`: beliebig große Integer
+    * `Num`: 64 bit floating points
+    * `Rat`: Bruchzahlen
+    * `Real`: Int, Num, Rat
+    * `Complex`: Komplexe Zahlen
+    * `Numeric`: Complex, Real
+
+= Andere Typen
+:features(r+ n+)
+
+    * `Str`: (Unicode-)Strings
+    * `Buf`: Binäre strings
+    * `List`, `Array`
+    * `EnumMap`, `Hash`
+
+= Typen II: Check zur Compile-Zeit
+:features(r+ n-)
+:perl6
+
+    sub a(Int $x) { }; a "foo"
+    # ===SORRY!===
+    # CHECK FAILED:
+    # Calling 'a' will never work with argument
+    # types (str) (line 1)
+    # Expected: :(Int $x)
+
+= Typen weiter verfeinern
+:features(r+ n+)
+:perl6
+
+    subset Positive of Real where { $_ > 0 };
+    sub circle-area(Positive $r) {
+        $r * $r * pi;
+    }
+    say circle-area(3); # works
+    say circle-area(-3); # BOOM
+    # Constraint type check failed for parameter '$r'
+    #   in sub circle-area at /home/moritz/subset.pl:2
+
+= Multi Subroutinen
+:features(r+ n+)
+:perl6
+
+    multi to-json(Real $x) { $x.Str }
+    multi to-json(@x) { 
+        '[' ~ @x.map(&to-json).join(', ') ~ ']'
+    }
+    ...
+
+= Multi Subroutinen: Dispatch
+:features(r+ n+)
+
+  * Anzahl der Argumente
+  * Typ der Argumente
+  * Weitere Bedingungen `where ... `
+
 = Klassen
 :features(r+ n+)
 :perl6
@@ -121,12 +210,48 @@ affiliation: #perl6
 
 = Rollen
 :features(r+ n+)
+
+    * Können Attribute und Methoden haben
+    * Attribute und Methoden werden intelligent in Klassen kopiert
+    * Konflikte und fehlende Methoden werden zur Kompile-Zeit erkannt
+
+= Rollen
+:features(r+ n+)
 :perl6
 
-    role A { }
+    role Real { # for real numbers
+        method abs  { self <= 0 ?? -self !! self }
+        method sqrt { self.Num.sqrt }
+        ...
+    }
+    class Int does Real { }
+    say 10.sqrt; # 3.16227766016838
 
+= Rollen: Konflikte
+:features(r+ n+)
+:perl6
 
-    
+    role A { method x { } };
+    role B { method x { } }; 
+    class C does A does B { };
+
+    # BOOM:
+    # Method 'x' must be resolved by class C because it exists in
+    # multiple roles (B, A)
+
+= Rollen als Interfaces
+:features(r+ n+)
+:perl6
+
+    role A {
+        method x { ...}  # tatsächlich ... hier
+    };
+    class B does A { };
+
+    # BOOM:
+    # Method 'x' must be implemented by 'B' because it is
+    # required by role A 
+
 
 = Danke für eure Aufmerksamkeit!
 :raw
