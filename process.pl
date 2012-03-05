@@ -80,9 +80,11 @@ for my $block (@blocks) {
         page_num    => $page_num,
         total_page_count => scalar(@blocks),
     );
+
     my $contents = '';
+    my $class;
     if ($body =~ s/^:features\(([^\)]+)\)\s+//) {
-        $contents = features("$1");
+        $class = features("$1");
     }
     if ($body =~ /^:(\w+)/) {
         my $type = $1;
@@ -102,7 +104,7 @@ for my $block (@blocks) {
         }
     }
     $t->param(contents => $contents);
-    push @s5_slides, { contents => $contents, title => $title, page => $page_num };
+    push @s5_slides, { contents => $contents, title => $title, page => $page_num, extra_class => $class };
     open my $out_fh, '>:encoding(UTF-8)', $fn;
     print $out_fh $t->output;
     close $out_fh;
@@ -213,17 +215,13 @@ sub escape {
 sub features {
     my $feature_string = shift;
     my @f = split ' ', $feature_string;
-    my %map = (r => 'Rakudo', n => 'Niecza');
     my @r;
     for (@f) {
         if (/^(\w)([+-])/) {
-            my $impl = $map{$1};
-            my $descr = $2 eq '+' ? 'Works with' : "Doesn't work with";
-            push @r, "$descr $impl";
-
+           push @r, "$1" if $2 eq '+';
         } else {
             die "Can't handle feature string '$_'";
         }
     }
-    return qq[<div class="features">] . join("<br />\n", @r) . '</div>';
+    return join '_', 'feature', @r;
 }

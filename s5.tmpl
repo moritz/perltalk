@@ -25,6 +25,7 @@
     .features { display: none }
 </style>
 <!-- S5 JS -->
+<script src="jquery-1.4.3.min.js" type="text/javascript"></script>
 <script src="slides.js" type="text/javascript"></script>
 </head>
 <body>
@@ -52,7 +53,7 @@
 
 
 <%loop slides%>
-    <div class="slide" id="slide_<%var page%>">
+    <div class="slide <%if extra_class %><%var extra_class%><%/if%>" id="slide_<%var page%>">
     <h1><%var title%></h1>
     <%var contents escape=none%>
 

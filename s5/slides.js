@@ -106,6 +106,15 @@ function currentSlide() {
 	} else {
 		cs = document.currentSlide;
 	}
+    var source = document.getElementById('slide' + snum);
+    var additional_class = source.className.split(/\s+/)[1];
+    $('#header').removeClass('feature_r_n');
+    $('#header').removeClass('feature_r');
+    $('#header').removeClass('feature_n');
+    if (additional_class) {
+        $('#header').addClass(additional_class);
+    }
+
 	cs.innerHTML = '<span id="csHere">' + snum + '<\/span> ' + 
 		'<span id="csSep">\/<\/span> ' + 
 		'<span id="csTotal">' + (smax-1) + '<\/span>';
