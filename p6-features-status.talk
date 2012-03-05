@@ -93,7 +93,19 @@ affiliation: #perl6
     greet("GPW");       # hello GPW
     say &greet.WHAT;    # Sub()
 
-= Signaturen: "Slurpy"
+= Benannte Parameter
+:features(r+ n+)
+:perl6
+
+  sub rect(:$x, :$y, :$char = 'x') {
+      say $char x $x for 1..$y;
+  }
+  rect x => 8, y => 2
+  # xxxxxxxx
+  # xxxxxxxx
+
+
+= "Slurpy"
 :features(r+ n+)
 :perl6
 
@@ -202,7 +214,8 @@ affiliation: #perl6
 :features(r+ n+)
 
     * Auch für Methodenaufrufe:
-    * `@numbers.map(*.sqrt)`
+    * `@numbers.map(*.sqrt)` statt `@numbers.map({$_.sort})`
+    * `@names.sort(*.uc)`
 
 
 = Klassen
