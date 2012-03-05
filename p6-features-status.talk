@@ -172,6 +172,24 @@ affiliation: #perl6
   * Typ der Argumente
   * Weitere Bedingungen `where ... `
 
+= "Faule" Listen
+:features(r+ n+)
+:perl6
+
+    my @even := (0..*).map: { $_ * 2 };
+    say @even[10];  # 20
+    my @es:= @even.grep: { $_.sqrt.Int ** 2 == $_ };
+    say @es[10];    # 400
+
+= Sequenzen
+:features(r+ n+)
+:perl6
+
+    my @powers   := 1, 2, 4 ... *;
+    constant fib := 1, 1, { $^a + $^b } ... *;
+    say @powers[10];    # 1024
+    say fib[10];        # 89
+
 = Klassen
 :features(r+ n+)
 :perl6
