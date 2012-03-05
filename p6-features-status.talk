@@ -7,8 +7,8 @@ affiliation: #perl6
 = Perl 6 - Übersicht
 
     * Allgemeines
-    * Compiler-Uebersicht
-    * Features
+    * Compiler-Übersicht
+    * Features, und welche Kompiler sie implementieren
 
 = Was ist Perl 6?
 
@@ -32,7 +32,7 @@ affiliation: #perl6
 = Rakudo
 
    * Setzt auf der Parrot Virtual Machine auf 
-   * Ziel: benutzbar fuer moeglichst viele User
+   * Ziel: benutzbar für moeglichst viele User
    * Kompiliert source code nach Bytecode, führt direkt aus
    * Monatliche Releases
    * Entwickler: Jonathan Worthington, Patrick Michaud, Moritz Lenz, Carl
@@ -189,6 +189,21 @@ affiliation: #perl6
     constant fib := 1, 1, { $^a + $^b } ... *;
     say @powers[10];    # 1024
     say fib[10];        # 89
+
+= Whatever-Blöcke
+:features(r+ n+)
+
+    * `{ $^a + $^b }` ist unangenehm zu tippen
+    * Kürzere Alternative: `* + *`
+    * Jedes `*` wird durch einen Parameter ersetzt
+    * `constant fib = 1, 1, *+* ... *;`
+
+= Whatever-Blöcke 
+:features(r+ n+)
+
+    * Auch für Methodenaufrufe:
+    * `@numbers.map(*.sqrt)`
+
 
 = Klassen
 :features(r+ n+)
