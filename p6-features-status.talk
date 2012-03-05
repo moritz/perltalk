@@ -316,7 +316,7 @@ affiliation: #perl6
         token hex { '0x' (<[a..f A..F 0..9]>+) }
     }
     Number.parse('0xDEADBEEF');
-    say $/.keys;        # int
+    say $/.keys;        # hex
     say $<hex>[0].Str;  # DEADBEEF
 
 = Longest-Token Matching
@@ -325,6 +325,7 @@ affiliation: #perl6
     * In `|`-Alternativen gewinnt der längste Match
     * Hilfreich, wenn man durch Vererbung Regexes hinzufügt (Reihenfolge
       irrelevant)
+    * Enstpricht intuitivem Verständnis von Syntax
 
 = Viel Mehr Features
 :raw

@@ -56,7 +56,7 @@ div#footer {font-size: 0.5em; font-weight: bold; padding: 1em 0;}
 div.feature_r_n h1:after  { content: ' ✔ Rakudo, ✔ Niecza' }
 
 div.feature_r h1:after  { content: ' ✔ Rakudo' }
-div.feature_n h1:after  { content: ' x Rakudo' }
+div.feature_n h1:after  { content: ' ✔ Niecza' }
 
 div.long {font-size: 0.75em;}
 .slide h1 {
