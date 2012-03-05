@@ -93,7 +93,7 @@ affiliation: #perl6
     greet("GPW");       # hello GPW
     say &greet.WHAT;    # Sub()
 
-= Signaturen: Variable Anzahl von Argumenten
+= Signaturen: "Slurpy"
 :features(r+ n+)
 :perl6
 
